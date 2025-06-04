@@ -1,411 +1,113 @@
-
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>נוכחות חניכים - עם צבעים</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      direction: rtl;
-      background: #ffffff;
-    }
-    body {
-      padding: 5px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    h2 {
-      font-size: 16px;
-      margin: 5px 0 10px 0;
-    }
-    table {
-      width: 100%;
-      max-width: 960px;
-      border-collapse: collapse;
-      font-size: 10px;
-    }
-    th {
-      background-color: #007acc;
-      color: white;
-      padding: 4px;
-      font-size: 11px;
-    }
-    td {
-      border: 1px solid #ddd;
-      padding: 3px;
-    }
-    select, input[type="text"] {
-      width: 100%;
-      padding: 2px;
-      font-size: 9px;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-    tr:hover {
-      background-color: #f2f2f2;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>טבלת נוכחות</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        .status-cell {
+            transition: background-color 0.3s;
+        }
+
+        .green { background-color: #c8e6c9; }   /* נוכח */
+        .red { background-color: #ffcdd2; }     /* חסר */
+        .gray { background-color: #e0e0e0; }     /* בלת"ם */
+        .white { background-color: white; }     /* אחר */
+    </style>
 </head>
 <body>
 
-  <h2>דוח נוכחות יומי</h2>
-  <table>
+<h2 style="text-align: center;">טבלת נוכחות</h2>
+
+<table>
     <thead>
-      <tr>
-        <th>שם תלמיד</th>
-        <th>נוכחות</th>
-      </tr>
+        <tr>
+            <th>שם תלמיד</th>
+            <th>סטטוס</th>
+        </tr>
     </thead>
-    <tbody>
-      
-      <tr>
-        <td>יואל אידר</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>ינון גואטה</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>שלמה היימליך</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>נחמן בן אור</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>נפתלי ברגר</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>שמואל בלאוו</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>אריאל בן פזי</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>יוסי בן חיים</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>יקיר אוזן</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>דוד טייכמן</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>ישראל בינונסקי</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>שלמה הופמן</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>דוב צוקר</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>מוטי קופשיץ</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>יעקב מתן</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>שלוימי וינד</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>בצלאל שטרן</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>אלעזר מתן</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>הרשי רוזנפלד</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>יונתן רוזנפלד</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>ירוחם מנדלסון</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>הרשי שור</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>שמריה זלמנוב</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
-      <tr>
-        <td>שלומי נוישטט</td>
-        <td>
-          <select onchange="handleChange(this)">
-            <option value="" selected disabled>בחר</option>
-            <option value="נוכח">נוכח</option>
-            <option value="בלת&quot;ם">בלת"ם</option>
-            <option value="חסר באישור">חסר באישור</option>
-            <option value="אחר">אחר</option>
-          </select>
-        </td>
-      </tr>
-    
+    <tbody id="attendance-body">
+        <!-- התלמידים יוזנו כאן -->
     </tbody>
-  </table>
+</table>
 
-  <script>
-    function handleChange(selectElement) {
-      const selected = selectElement.value;
-      const td = selectElement.parentElement;
-      const row = td.parentElement;
+<script>
+    const students = [
+        "יואל אידר", "ינון גואטה", "שלמה היימליך", "נחמן בן אור",
+        "נפתלי ברגר", "שמואל בלאוו", "אריאל בן פזי", "יוסי בן חיים",
+        "יקיר אוזן", "דוד טייכמן", "ישראל בינונסקי", "שלמה הופמן",
+        "דוב צוקר", "מוטי קופשיץ", "יעקב מתן", "שלוימי וינד",
+        "בצלאל שטרן", "אלעזר מתן", "הרשי רוזנפלד", "יונתן רוזנפלד",
+        "ירוחם מנדלסון", "הרשי שור", "שמריה זלמנוב", "שלומי נוישטט"
+    ];
 
-      // הסרת שדות טקסט קיימים (אם יש)
-      const existingInput = td.querySelector('input[type="text"]');
-      if (existingInput) td.removeChild(existingInput);
+    const statuses = [
+        { text: "", value: "" },
+        { text: "נוכח", value: "green" },
+        { text: "חסר", value: "red" },
+        { text: "בלת\"ם", value: "gray" },
+        { text: "אחר", value: "white" }
+    ];
 
-      // איפוס רקע קודם
-      row.style.backgroundColor = "";
+    const tbody = document.getElementById("attendance-body");
 
-      if (selected === "נוכח") {
-        row.style.backgroundColor = "#d4f7d4";  // ירוק
-      } else if (selected === "בלת"ם") {
-        row.style.backgroundColor = "#e0e0e0";  // אפור
-      } else if (selected === "חסר באישור") {
-        row.style.backgroundColor = "#ffd6d6";  // אדום
-      } else if (selected === "אחר") {
-        row.style.backgroundColor = "#ffffff";  // לבן
-        const input = document.createElement("input");
-        input.type = "text";
-        input.placeholder = "סיבה...";
-        input.style.marginTop = '2px';
-        td.appendChild(input);
-      }
-    }
-  </script>
+    students.forEach(name => {
+        const row = document.createElement("tr");
+
+        const nameCell = document.createElement("td");
+        nameCell.textContent = name;
+        row.appendChild(nameCell);
+
+        const statusCell = document.createElement("td");
+        statusCell.classList.add("status-cell");
+
+        const select = document.createElement("select");
+
+        statuses.forEach(status => {
+            const option = document.createElement("option");
+            option.value = status.value;
+            option.textContent = status.text;
+            select.appendChild(option);
+        });
+
+        select.addEventListener("change", () => {
+            statusCell.className = "status-cell"; // ניקוי צבע קודם
+            if (select.value) {
+                statusCell.classList.add(select.value);
+            }
+        });
+
+        statusCell.appendChild(select);
+        row.appendChild(statusCell);
+
+        tbody.appendChild(row);
+    });
+</script>
 
 </body>
 </html>
